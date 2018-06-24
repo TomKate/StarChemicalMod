@@ -1,0 +1,19 @@
+[
+    {
+        "modid": "sccraft",
+        "name": "StarChemicalCraft",
+        "description": "Industrial",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "updateUrl": "",
+        "authorList": [
+            "Starmineouji"
+        ],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [
+        ],
+        "dependencies": [
+        ]
+    }
+]
