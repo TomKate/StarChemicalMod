@@ -8,14 +8,14 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+//ここから下の行を編集するだけで上のプラグインはForgeをセットアップするために必要なものを追加し、有効にします。
 
 
-version = "1.0"
-group = "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+version = "0.0.1-TEST"
+group = "io.github.starmineouji" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "StarChemicalMod"
 
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = '1.8'  // Eclipseのタスクが正しく生成されるためには、ここが必要です。
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
@@ -24,53 +24,52 @@ minecraft {
     version = "1.12.2-14.23.4.2710"
     runDir = "run"
     
-    // the mappings can be changed at any time, and must be in the following format.
-    // snapshot_YYYYMMDD   snapshot are built nightly.
-    // stable_#            stables are built at the discretion of the MCP team.
-    // Use non-default mappings at your own risk. they may not always work.
-    // simply re-run your setup task after changing the mappings to update your workspace.
+    // マッピングはいつでも変更できますが、次の形式でなければなりません。
+    // snapshot_YYYYMMDD   スナップショットは夜間？に構築されます。
+    // stable_#            stables はMCPチームの裁量で構築されています。
+    // あなた自身の責任で非ディフォルトのマッピングを利用してください。それは常に機能するとは限りません
+    // ワークスペースを更新する為、マッピングを変更した後、セットアップタスクを再実行してください。
     mappings = "snapshot_20171003"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
+    // makeObfSourceJar = false // srgという名前のsources.jarがデフォルトで生成されます。これを無効にします。。
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
+    // ./libsに依存するjarファイルを置くことができます。 また、あなたは依存関係を定義することができます。
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
       
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
+    // (例)
+    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // buildcraftをdev envに追加する
+    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // ejmlをdev envに追加する
 
-    // the 'provided' configuration is for optional dependencies that exist at compile-time but might not at runtime.
+    // '提供された'構成は、コンパイル時に存在するが、実行時には存在しない可能性があるオプションの依存性のためのものです。
     //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
-    // the deobf configurations:  'deobfCompile' and 'deobfProvided' are the same as the normal compile and provided,
-    // except that these dependencies get remapped to your current MCP mappings
+    // deobfの設定： 'deobfCompile'と 'deobfProvided'は通常のコンパイルと同じであり、
+    //これらの依存関係は現在のMCPマッピングに再マッピングされます
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
-    // for more info...
+    // 詳細は
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    //をご覧ください。
 }
 
 processResources {
-    // this will ensure that this task is redone when the versions change.
+    // バージョンが変更されたときにこのタスクが再実行されます。
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
+     // mcmod.infoのものを書き換えます
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
                 
-        // replace version and mcversion
+        // バージョンとmcバージョンを置き換えます。
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // copy everything else except the mcmod.info
+    // mcmod.info以外のすべてをコピーします。
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }

@@ -21,7 +21,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod(modid = StarChemicalMod.MODID, name = StarChemicalMod.NAME, version = StarChemicalMod.VERSION)
 public class StarChemicalMod {
 	public static final String MODID = "sccraft";
-	public static final String NAME = "StarChemicalCraft";
+	public static final String NAME = "StarChemicalMod";
 	public static final String VERSION = "0.0.1-TEST";
 	public static final CreativeTabs elems = new Elements();
 
