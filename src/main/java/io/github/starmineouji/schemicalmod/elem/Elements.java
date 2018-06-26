@@ -11,7 +11,7 @@ public Elements() {
 	@Override
 	public ItemStack getTabIconItem() {
 		// TODO Auto-generated method stub
-		return null;
+		return Element.elements.iterator().next().ITEM.getDefaultInstance();
 	}
 
 }
