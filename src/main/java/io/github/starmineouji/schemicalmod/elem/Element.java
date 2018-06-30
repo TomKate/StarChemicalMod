@@ -21,7 +21,11 @@ import net.minecraftforge.fluids.FluidRegistry;
 
 public class Element {
 	public static Set<Element> elements = new HashSet<>();
-
+	
+	public Element() {
+		
+	}
+	
 	public Element(ElementType type, String name, int number) {
 		super();
 		this.type = type;
@@ -48,16 +52,16 @@ public class Element {
 		return element;
 	}
 
-	public final ElementType type;
-	public final String name;
+	protected ElementType type;
+	protected String name;
 
 	/**
 	 * å¥éqî‘çÜ
 	 */
-	public final int Number;
-	public final Block BLOCK, FLUID, GAS;
-	public final Fluid FGAS, FFLUID;
-	public final Item ITEM, IBLOCK, IFLUID, IGAS;
+	protected  int Number;
+	protected Block BLOCK, FLUID, GAS;
+	protected Fluid FGAS, FFLUID;
+	protected Item ITEM, IBLOCK, IFLUID, IGAS;
 
 	public class EBlock extends Block {
 
@@ -99,6 +103,58 @@ public class Element {
 
 	public static enum ElementType {
 		GAS, FLUID, SOLID
+	}
+
+	public static Set<Element> getElements() {
+		return elements;
+	}
+
+	public ElementType getType() {
+		return type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getNumber() {
+		return Number;
+	}
+
+	public Block getBlock() {
+		return BLOCK;
+	}
+
+	public Block getBlockFluid() {
+		return FLUID;
+	}
+
+	public Block getBlockGas() {
+		return GAS;
+	}
+
+	public Fluid getFluidGus() {
+		return FGAS;
+	}
+
+	public Fluid getFFluid() {
+		return FFLUID;
+	}
+
+	public Item getItem() {
+		return ITEM;
+	}
+
+	public Item getItemblock() {
+		return IBLOCK;
+	}
+
+	public Item getItemFluid() {
+		return IFLUID;
+	}
+
+	public Item getItemGas() {
+		return IGAS;
 	}
 
 }

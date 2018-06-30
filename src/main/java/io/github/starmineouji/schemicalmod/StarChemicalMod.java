@@ -4,8 +4,6 @@ import org.apache.logging.log4j.Logger;
 
 import io.github.starmineouji.schemicalmod.elem.Element;
 import io.github.starmineouji.schemicalmod.elem.Element.ElementType;
-import io.github.starmineouji.schemicalmod.elem.ElementRegister;
-import io.github.starmineouji.schemicalmod.elem.Elements;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

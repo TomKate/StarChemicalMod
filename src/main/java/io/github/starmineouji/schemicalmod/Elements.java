@@ -1,5 +1,6 @@
-package io.github.starmineouji.schemicalmod.elem;
+package io.github.starmineouji.schemicalmod;
 
+import io.github.starmineouji.schemicalmod.elem.Element;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
@@ -11,7 +12,7 @@ public Elements() {
 	@Override
 	public ItemStack getTabIconItem() {
 		// TODO Auto-generated method stub
-		return Element.elements.iterator().next().ITEM.getDefaultInstance();
+		return Element.elements.iterator().next().getItem().getDefaultInstance();
 	}
 
 }

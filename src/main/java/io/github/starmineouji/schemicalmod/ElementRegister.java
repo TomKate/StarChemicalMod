@@ -1,6 +1,6 @@
-package io.github.starmineouji.schemicalmod.elem;
+package io.github.starmineouji.schemicalmod;
 
-import io.github.starmineouji.schemicalmod.StarChemicalMod;
+import io.github.starmineouji.schemicalmod.elem.Element;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -17,19 +17,19 @@ import net.minecraftforge.fml.common.event.FMLStateEvent;
 public class ElementRegister {
 	public static void preInit(FMLStateEvent e) {
 		for (Element elem : Element.elements) {
-			fluidregist(elem.FGAS, new ModelResourceLocation("sccraft:blocks/"+elem.name+"_gas", "fluid"), 
-					elem.GAS, e);
-			fluidregist(elem.FFLUID, new ModelResourceLocation("sccraft:blocks/"+elem.name+"_fluid", "fluid"), 
-					elem.FLUID,e);
+			fluidregist(elem.getFluidGus(), new ModelResourceLocation("sccraft:blocks/"+elem.getName()+"_gas", "fluid"), 
+					elem.getBlockGas(), e);
+			fluidregist(elem.getFFluid(), new ModelResourceLocation("sccraft:blocks/"+elem.getName()+"_fluid", "fluid"), 
+					elem.getBlockFluid(),e);
 		if (e.getSide().isClient()) {
-			ModelLoader.setCustomModelResourceLocation(elem.IBLOCK, 0,
-					new ModelResourceLocation(elem.IBLOCK.getRegistryName(), "inventory"));
-			ModelLoader.setCustomModelResourceLocation(elem.IFLUID, 0,
-					new ModelResourceLocation(elem.IFLUID.getRegistryName(), "inventory"));
-			ModelLoader.setCustomModelResourceLocation(elem.IGAS, 0,
-					new ModelResourceLocation(elem.IGAS.getRegistryName(), "inventory"));
-			ModelLoader.setCustomModelResourceLocation(elem.ITEM, 0,
-					new ModelResourceLocation(elem.ITEM.getRegistryName(), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
+					new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(elem.getItemFluid(), 0,
+					new ModelResourceLocation(elem.getItemFluid().getRegistryName(), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(elem.getItemGas(), 0,
+					new ModelResourceLocation(elem.getItemGas().getRegistryName(), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
+					new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
 		}
 		}
 	}
@@ -54,12 +54,12 @@ public class ElementRegister {
 
 	public static void registblock(RegistryEvent.Register<Block> event) {
 		for (Element elem : Element.elements) {
-			event.getRegistry().registerAll(elem.BLOCK, elem.FLUID, elem.GAS);
+			event.getRegistry().registerAll(elem.getBlock(), elem.getBlockFluid(), elem.getBlockGas());
 		}
 	}
 	public static void registitem(RegistryEvent.Register<Item> event) {
 		for (Element elem : Element.elements) {
-			event.getRegistry().registerAll(elem.IBLOCK, elem.IFLUID, elem.IGAS, elem.ITEM);
+			event.getRegistry().registerAll(elem.getItemblock(), elem.getItemFluid(), elem.getItemGas(), elem.getItem());
 		}
 	}
 }
