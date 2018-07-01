@@ -1,28 +1,28 @@
-�����Forge Mod Loader�ł��B
+これはForge Mod Loaderです。
 
-���Ȃ��͂��ł� https://github.com/MinecraftForge/FML �Ń\�[�X�R�[�h�������邱�Ƃ��ł��܂�
+あなたはいつでも https://github.com/MinecraftForge/FML でソースコードを見つけることができます
 
-����minecraft mod�́A�}�C���N���t�g�T�[�o�[�A�N���C�A���g�p��mod���[�_�[�̃N���[���I�[�v���\�[�X�����łł��B
+このminecraft modは、マインクラフトサーバー、クライアント用のmodローダーのクリーンオープンソース実装版です。
 
-�R�[�h��cpw�ɂ���č쐬����܂��B
+コードはcpwによって作成されます。
 
-�����Risugami���ɂ���č쐬���ꂽ�N���C�A���g����Modloader�ɂ����API�𕔕��I�Ɏ������邱�Ƃ���n�܂�܂����B
+それはRisugami氏によって作成されたクライアント側のModloaderによってAPIを部分的に実装することから始まりました。
 http://www.minecraftforum.net/topic/75440-
-���̃T�|�[�g�́ARisugami����Modloader���ێ����Ă��Ȃ��ׁAMinecraft 1.7����폜����܂����B
+このサポートは、Risugami氏がModloaderを維持していない為、Minecraft 1.7から削除されました。
 
-�܂��AMinecraftForge�̒��҂ł���LexManos���̃R�[�h�̃q���g�⊰��ȏ������܂܂�Ă��܂��B
+また、MinecraftForgeの著者であるLexManos氏のコードのヒントや寛大な助けも含まれています。
 http://www.minecraftforge.net/
 
-����ɁA����Ɋ�Â����g�|���W�J���\�[�g�̎������܂܂�Ă��܂��B
+さらに、それに基づいたトポロジカルソートの実装が含まれています。
 published at http://keithschwarz.com/interesting/code/?dir=topological-sort
 
-�܂��A�o�[�W�����Ǘ����ꂽ�ˑ������������s���邽�߂�Maven�v���W�F�N�g�̃R�[�h���܂܂�Ă��܂��B
+また、バージョン管理された依存性解決を実行するためのMavenプロジェクトのコードも含まれています。
  http://maven.apache.org/
 
-�܂��A http://sourceforge.net/projects/javaxdelta/ �����javaxdelta���C�u�����̕����I�ȍăp�b�P�[�W�����܂܂�Ă��܂�
+また、 http://sourceforge.net/projects/javaxdelta/ からのjavaxdeltaライブラリの部分的な再パッケージ化も含まれています
 
-����͒��҂̌��тł���B
+それは著者の功績である。
 
-Forge Mod Loader��Minecraft Coder Pack����MCP�`�[������̐e�؂ȋ��𓾂ăR���|�[�l���g���_�E�����[�h���܂�
+Forge Mod LoaderはMinecraft Coder PackからMCPチームからの親切な許可を得てコンポーネントをダウンロードします
 (http://mcp.ocean-labs.de/index.php/Main_Page) 
 
