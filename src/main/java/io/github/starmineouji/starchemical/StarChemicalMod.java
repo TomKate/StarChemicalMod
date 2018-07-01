@@ -1,4 +1,4 @@
-package io.github.starmineouji.schemicalmod;
+package io.github.starmineouji.starchemical;
 
 import java.util.List;
 import java.util.Map;
@@ -8,9 +8,9 @@ import org.apache.logging.log4j.Logger;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
-import io.github.starmineouji.schemicalmod.elem.base.Element;
-import io.github.starmineouji.schemicalmod.elem.base.RadioactiveElement;
-import io.github.starmineouji.schemicalmod.lib.Lambdas;
+import io.github.starmineouji.starchemical.elem.base.Element;
+import io.github.starmineouji.starchemical.elem.base.RadioactiveElement;
+import io.github.starmineouji.starchemical.lib.Lambdas;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -25,7 +25,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = StarChemicalMod.MODID, name = StarChemicalMod.NAME, version = StarChemicalMod.VERSION)
 public class StarChemicalMod {
-	public static final String MODID = "sccraft";
+	// MEMO: \u2080 ~ \u2089 = 小さい文字
+	public static final String MODID = "starchemical";
 	public static final String NAME = "StarChemicalMod";
 	public static final String VERSION = "0.0.1-TEST";
 	public static final CreativeTabs elems = new Elements();
@@ -40,12 +41,18 @@ public class StarChemicalMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		Element.addElement(new RadioactiveElement("Nether", 150, 100, Lambdas.toMap(map -> {
+		Element.addElement(new RadioactiveElement("Netherlium", 150, 100, Lambdas.toMap(map -> {
 			map.put("H", 1);
 			map.put("Ne", 1);
 			map.put("Fe", 1);
 			map.put("U", 5);
 		}), "Nt"));
+		Element.addElement(new RadioactiveElement("Enderlium", 151, 100, Lambdas.toMap(map -> {
+			map.put("H", 1);
+			map.put("Ne", 1);
+			map.put("U", 5);
+		}), "Ed"));
+		Element.addElement("Hydrogen", 1, "H");
 		ElementRegister.preInit(event);
 	}
 

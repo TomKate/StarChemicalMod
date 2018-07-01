@@ -8,68 +8,71 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-//‚±‚±‚©‚ç‰º‚Ìs‚ğ•ÒW‚·‚é‚¾‚¯‚Åã‚Ìƒvƒ‰ƒOƒCƒ“‚ÍForge‚ğƒZƒbƒgƒAƒbƒv‚·‚é‚½‚ß‚É•K—v‚È‚à‚Ì‚ğ’Ç‰Á‚µA—LŒø‚É‚µ‚Ü‚·B
+//ã“ã“ã‹ã‚‰ä¸‹ã®è¡Œã‚’ç·¨é›†ã™ã‚‹ã ã‘ã§ä¸Šã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¯Forgeã‚’ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã™ã‚‹ãŸã‚ã«å¿…è¦ãªã‚‚ã®ã‚’è¿½åŠ ã—ã€æœ‰åŠ¹ã«ã—ã¾ã™ã€‚
 
-
+javadoc{
+options.encoding = 'UTF-8'
+}
 version = "0.0.1-TEST"
 group = "io.github.starmineouji" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "StarChemicalMod"
 
-sourceCompatibility = targetCompatibility = '1.8'  // Eclipse‚Ìƒ^ƒXƒN‚ª³‚µ‚­¶¬‚³‚ê‚é‚½‚ß‚É‚ÍA‚±‚±‚ª•K—v‚Å‚·B
+sourceCompatibility = targetCompatibility = '1.8'  // Eclipseã®ã‚¿ã‚¹ã‚¯ãŒæ­£ã—ãç”Ÿæˆã•ã‚Œã‚‹ãŸã‚ã«ã¯ã€ã“ã“ãŒå¿…è¦ã§ã™ã€‚
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
+    options.encoding = 'UTF-8'
 }
 
 minecraft {
-    version = "1.12.2-14.23.4.2710"
+    version = "1.12.2-14.23.4.2725"
     runDir = "run"
     
-    // ƒ}ƒbƒsƒ“ƒO‚Í‚¢‚Â‚Å‚à•ÏX‚Å‚«‚Ü‚·‚ªAŸ‚ÌŒ`®‚Å‚È‚¯‚ê‚Î‚È‚è‚Ü‚¹‚ñB
-    // snapshot_YYYYMMDD   ƒXƒiƒbƒvƒVƒ‡ƒbƒg‚Í–éŠÔH‚É\’z‚³‚ê‚Ü‚·B
-    // stable_#            stables ‚ÍMCPƒ`[ƒ€‚ÌÙ—Ê‚Å\’z‚³‚ê‚Ä‚¢‚Ü‚·B
-    // ‚ ‚È‚½©g‚ÌÓ”C‚Å”ñƒfƒBƒtƒHƒ‹ƒg‚Ìƒ}ƒbƒsƒ“ƒO‚ğ—˜—p‚µ‚Ä‚­‚¾‚³‚¢B‚»‚ê‚Íí‚É‹@”\‚·‚é‚Æ‚ÍŒÀ‚è‚Ü‚¹‚ñ
-    // ƒ[ƒNƒXƒy[ƒX‚ğXV‚·‚éˆ×Aƒ}ƒbƒsƒ“ƒO‚ğ•ÏX‚µ‚½ŒãAƒZƒbƒgƒAƒbƒvƒ^ƒXƒN‚ğÄÀs‚µ‚Ä‚­‚¾‚³‚¢B
+    // ãƒãƒƒãƒ”ãƒ³ã‚°ã¯ã„ã¤ã§ã‚‚å¤‰æ›´ã§ãã¾ã™ãŒã€æ¬¡ã®å½¢å¼ã§ãªã‘ã‚Œã°ãªã‚Šã¾ã›ã‚“ã€‚
+    // snapshot_YYYYMMDD   ã‚¹ãƒŠãƒƒãƒ—ã‚·ãƒ§ãƒƒãƒˆã¯å¤œé–“ï¼Ÿã«æ§‹ç¯‰ã•ã‚Œã¾ã™ã€‚
+    // stable_#            stables ã¯MCPãƒãƒ¼ãƒ ã®è£é‡ã§æ§‹ç¯‰ã•ã‚Œã¦ã„ã¾ã™ã€‚
+    // ã‚ãªãŸè‡ªèº«ã®è²¬ä»»ã§éãƒ‡ã‚£ãƒ•ã‚©ãƒ«ãƒˆã®ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’åˆ©ç”¨ã—ã¦ãã ã•ã„ã€‚ãã‚Œã¯å¸¸ã«æ©Ÿèƒ½ã™ã‚‹ã¨ã¯é™ã‚Šã¾ã›ã‚“
+    // ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã‚’æ›´æ–°ã™ã‚‹ç‚ºã€ãƒãƒƒãƒ”ãƒ³ã‚°ã‚’å¤‰æ›´ã—ãŸå¾Œã€ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚¿ã‚¹ã‚¯ã‚’å†å®Ÿè¡Œã—ã¦ãã ã•ã„ã€‚
     mappings = "snapshot_20171003"
-    // makeObfSourceJar = false // srg‚Æ‚¢‚¤–¼‘O‚Ìsources.jar‚ªƒfƒtƒHƒ‹ƒg‚Å¶¬‚³‚ê‚Ü‚·B‚±‚ê‚ğ–³Œø‚É‚µ‚Ü‚·BB
+    // makeObfSourceJar = false // srgã¨ã„ã†åå‰ã®sources.jarãŒãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã§ç”Ÿæˆã•ã‚Œã¾ã™ã€‚ã“ã‚Œã‚’ç„¡åŠ¹ã«ã—ã¾ã™ã€‚ã€‚
 }
 
 dependencies {
-    // ./libs‚ÉˆË‘¶‚·‚éjarƒtƒ@ƒCƒ‹‚ğ’u‚­‚±‚Æ‚ª‚Å‚«‚Ü‚·B ‚Ü‚½A‚ ‚È‚½‚ÍˆË‘¶ŠÖŒW‚ğ’è‹`‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+    // ./libsã«ä¾å­˜ã™ã‚‹jarãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç½®ãã“ã¨ãŒã§ãã¾ã™ã€‚ ã¾ãŸã€ã‚ãªãŸã¯ä¾å­˜é–¢ä¿‚ã‚’å®šç¾©ã™ã‚‹ã“ã¨ãŒã§ãã¾ã™ã€‚
     //compile "some.group:artifact:version:classifier"
     //compile "some.group:artifact:version"
       
-    // (—á)
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // buildcraft‚ğdev env‚É’Ç‰Á‚·‚é
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // ejml‚ğdev env‚É’Ç‰Á‚·‚é
+    // (ä¾‹)
+    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // buildcraftã‚’dev envã«è¿½åŠ ã™ã‚‹
+    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // ejmlã‚’dev envã«è¿½åŠ ã™ã‚‹
 
-    // '’ñ‹Ÿ‚³‚ê‚½'\¬‚ÍAƒRƒ“ƒpƒCƒ‹‚É‘¶İ‚·‚é‚ªAÀs‚É‚Í‘¶İ‚µ‚È‚¢‰Â”\«‚ª‚ ‚éƒIƒvƒVƒ‡ƒ“‚ÌˆË‘¶«‚Ì‚½‚ß‚Ì‚à‚Ì‚Å‚·B
+    // 'æä¾›ã•ã‚ŒãŸ'æ§‹æˆã¯ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«æ™‚ã«å­˜åœ¨ã™ã‚‹ãŒã€å®Ÿè¡Œæ™‚ã«ã¯å­˜åœ¨ã—ãªã„å¯èƒ½æ€§ãŒã‚ã‚‹ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®ä¾å­˜æ€§ã®ãŸã‚ã®ã‚‚ã®ã§ã™ã€‚
     //provided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
-    // deobf‚Ìİ’èF 'deobfCompile'‚Æ 'deobfProvided'‚Í’Êí‚ÌƒRƒ“ƒpƒCƒ‹‚Æ“¯‚¶‚Å‚ ‚èA
-    //‚±‚ê‚ç‚ÌˆË‘¶ŠÖŒW‚ÍŒ»İ‚ÌMCPƒ}ƒbƒsƒ“ƒO‚ÉÄƒ}ƒbƒsƒ“ƒO‚³‚ê‚Ü‚·
+    // deobfã®è¨­å®šï¼š 'deobfCompile'ã¨ 'deobfProvided'ã¯é€šå¸¸ã®ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ã¨åŒã˜ã§ã‚ã‚Šã€
+    //ã“ã‚Œã‚‰ã®ä¾å­˜é–¢ä¿‚ã¯ç¾åœ¨ã®MCPãƒãƒƒãƒ”ãƒ³ã‚°ã«å†ãƒãƒƒãƒ”ãƒ³ã‚°ã•ã‚Œã¾ã™
     //deobfCompile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
     //deobfProvided 'com.mod-buildcraft:buildcraft:6.0.8:dev'
 
-    // Ú×‚Í
+    // è©³ç´°ã¯
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    //‚ğ‚²——‚­‚¾‚³‚¢B
+    //ã‚’ã”è¦§ãã ã•ã„ã€‚
 }
 
 processResources {
-    // ƒo[ƒWƒ‡ƒ“‚ª•ÏX‚³‚ê‚½‚Æ‚«‚É‚±‚Ìƒ^ƒXƒN‚ªÄÀs‚³‚ê‚Ü‚·B
+    // ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒå¤‰æ›´ã•ã‚ŒãŸã¨ãã«ã“ã®ã‚¿ã‚¹ã‚¯ãŒå†å®Ÿè¡Œã•ã‚Œã¾ã™ã€‚
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-     // mcmod.info‚Ì‚à‚Ì‚ğ‘‚«Š·‚¦‚Ü‚·
+     // mcmod.infoã®ã‚‚ã®ã‚’æ›¸ãæ›ãˆã¾ã™
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
                 
-        // ƒo[ƒWƒ‡ƒ“‚Æmcƒo[ƒWƒ‡ƒ“‚ğ’u‚«Š·‚¦‚Ü‚·B
+        // ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¨mcãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’ç½®ãæ›ãˆã¾ã™ã€‚
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // mcmod.infoˆÈŠO‚Ì‚·‚×‚Ä‚ğƒRƒs[‚µ‚Ü‚·B
+    // mcmod.infoä»¥å¤–ã®ã™ã¹ã¦ã‚’ã‚³ãƒ”ãƒ¼ã—ã¾ã™ã€‚
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }

@@ -1,6 +1,6 @@
-package io.github.starmineouji.schemicalmod;
+package io.github.starmineouji.starchemical;
 
-import io.github.starmineouji.schemicalmod.elem.base.Element;
+import io.github.starmineouji.starchemical.elem.base.Element;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -17,12 +17,10 @@ import net.minecraftforge.fml.common.event.FMLStateEvent;
 public class ElementRegister {
 	public static void preInit(FMLStateEvent e) {
 		for (Element elem : Element.elements.values()) {
-		if (e.getSide().isClient()) {
-			ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
-					new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
-			ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
-					new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
-		}
+			if (e.getSide().isClient()) {
+				ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
+						new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
+			}
 		}
 	}
 
@@ -49,9 +47,10 @@ public class ElementRegister {
 			event.getRegistry().registerAll(elem.getBlock());
 		}
 	}
+
 	public static void registitem(RegistryEvent.Register<Item> event) {
 		for (Element elem : Element.elements.values()) {
-			event.getRegistry().registerAll(elem.getItemblock(), elem.getItem());
+			event.getRegistry().registerAll(elem.getItemblock());
 		}
 	}
 }

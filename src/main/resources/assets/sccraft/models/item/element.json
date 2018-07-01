@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "sccraft:block/{0}_block"
+    "layer0": "sccraft:items/{0}"
   },
   "display": {
     "thirdperson": {
