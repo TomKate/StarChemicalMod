@@ -40,7 +40,7 @@ public class StarChemicalMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		Element.elements.add(new RadioactiveElement("Nether", 150, 100, Lambdas.toMap(map -> {
+		Element.addElement(new RadioactiveElement("Nether", 150, 100, Lambdas.toMap(map -> {
 			map.put("H", 1);
 			map.put("Ne", 1);
 			map.put("Fe", 1);

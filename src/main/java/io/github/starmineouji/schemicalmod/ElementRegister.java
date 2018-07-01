@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.event.FMLStateEvent;
 
 public class ElementRegister {
 	public static void preInit(FMLStateEvent e) {
-		for (Element elem : Element.elements) {
+		for (Element elem : Element.elements.values()) {
 		if (e.getSide().isClient()) {
 			ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
 					new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
@@ -45,12 +45,12 @@ public class ElementRegister {
 	}
 
 	public static void registblock(RegistryEvent.Register<Block> event) {
-		for (Element elem : Element.elements) {
+		for (Element elem : Element.elements.values()) {
 			event.getRegistry().registerAll(elem.getBlock());
 		}
 	}
 	public static void registitem(RegistryEvent.Register<Item> event) {
-		for (Element elem : Element.elements) {
+		for (Element elem : Element.elements.values()) {
 			event.getRegistry().registerAll(elem.getItemblock(), elem.getItem());
 		}
 	}

@@ -1,26 +1,17 @@
 package io.github.starmineouji.schemicalmod.elem.base;
 
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 import io.github.starmineouji.schemicalmod.StarChemicalMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidClassic;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 
 public class Element {
-	public static Set<Element> elements = new HashSet<>();
+	public static Map<String, Element> elements = new HashMap<>();
 	
 	public Element() {
 
@@ -37,8 +28,12 @@ public class Element {
 
 	public static Element addElement(String name, int number, String ESymbol) {
 		Element element = new Element(name, number, ESymbol);
-		elements.add(element);
+		elements.put(ESymbol, element);
 		return element;
+	}
+	public static Element addElement(Element e) {
+		elements.put(e.ESymbol, e);
+		return e;
 	}
 	protected String name, ESymbol;
 
@@ -68,7 +63,7 @@ public class Element {
 		}
 	}
 
-	public static Set<Element> getElements() {
+	public static Map<String, Element> getElements() {
 		return elements;
 	}
 
