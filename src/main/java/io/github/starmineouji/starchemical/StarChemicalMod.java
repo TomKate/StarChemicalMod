@@ -52,7 +52,6 @@ public class StarChemicalMod {
 			map.put("Ne", 1);
 			map.put("U", 5);
 		}), "Ed"));
-		Element.addElement("Hydrogen", 1, "H");
 		ElementRegister.preInit(event);
 	}
 
