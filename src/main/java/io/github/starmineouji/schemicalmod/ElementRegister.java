@@ -1,6 +1,6 @@
 package io.github.starmineouji.schemicalmod;
 
-import io.github.starmineouji.schemicalmod.elem.Element;
+import io.github.starmineouji.schemicalmod.elem.base.Element;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
@@ -17,17 +17,9 @@ import net.minecraftforge.fml.common.event.FMLStateEvent;
 public class ElementRegister {
 	public static void preInit(FMLStateEvent e) {
 		for (Element elem : Element.elements) {
-			fluidregist(elem.getFluidGus(), new ModelResourceLocation("sccraft:blocks/"+elem.getName()+"_gas", "fluid"), 
-					elem.getBlockGas(), e);
-			fluidregist(elem.getFFluid(), new ModelResourceLocation("sccraft:blocks/"+elem.getName()+"_fluid", "fluid"), 
-					elem.getBlockFluid(),e);
 		if (e.getSide().isClient()) {
 			ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
 					new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
-			ModelLoader.setCustomModelResourceLocation(elem.getItemFluid(), 0,
-					new ModelResourceLocation(elem.getItemFluid().getRegistryName(), "inventory"));
-			ModelLoader.setCustomModelResourceLocation(elem.getItemGas(), 0,
-					new ModelResourceLocation(elem.getItemGas().getRegistryName(), "inventory"));
 			ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
 					new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
 		}
@@ -54,12 +46,12 @@ public class ElementRegister {
 
 	public static void registblock(RegistryEvent.Register<Block> event) {
 		for (Element elem : Element.elements) {
-			event.getRegistry().registerAll(elem.getBlock(), elem.getBlockFluid(), elem.getBlockGas());
+			event.getRegistry().registerAll(elem.getBlock());
 		}
 	}
 	public static void registitem(RegistryEvent.Register<Item> event) {
 		for (Element elem : Element.elements) {
-			event.getRegistry().registerAll(elem.getItemblock(), elem.getItemFluid(), elem.getItemGas(), elem.getItem());
+			event.getRegistry().registerAll(elem.getItemblock(), elem.getItem());
 		}
 	}
 }

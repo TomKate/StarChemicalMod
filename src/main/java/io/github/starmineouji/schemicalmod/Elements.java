@@ -1,6 +1,6 @@
 package io.github.starmineouji.schemicalmod;
 
-import io.github.starmineouji.schemicalmod.elem.Element;
+import io.github.starmineouji.schemicalmod.elem.base.Element;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 

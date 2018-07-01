@@ -1,9 +1,16 @@
 package io.github.starmineouji.schemicalmod;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.logging.log4j.Logger;
 
-import io.github.starmineouji.schemicalmod.elem.Element;
-import io.github.starmineouji.schemicalmod.elem.Element.ElementType;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+
+import io.github.starmineouji.schemicalmod.elem.base.Element;
+import io.github.starmineouji.schemicalmod.elem.base.RadioactiveElement;
+import io.github.starmineouji.schemicalmod.lib.Lambdas;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -33,7 +40,12 @@ public class StarChemicalMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		Element.addElement(ElementType.SOLID, "nether", 150);
+		Element.elements.add(new RadioactiveElement("Nether", 150, 100, Lambdas.toMap(map -> {
+			map.put("H", 1);
+			map.put("Ne", 1);
+			map.put("Fe", 1);
+			map.put("U", 5);
+		}), "Nt"));
 		ElementRegister.preInit(event);
 	}
 
