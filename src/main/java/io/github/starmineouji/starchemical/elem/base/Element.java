@@ -105,7 +105,7 @@ public class Element {
 		public EBlock() {
 			super(Material.ROCK);
 			// TODO Auto-generated constructor stub
-			setRegistryName(StarChemicalMod.MODID, name).setCreativeTab(StarChemicalMod.elems).setUnlocalizedName(name)
+			setRegistryName(StarChemicalMod.MODID, name.toLowerCase()).setCreativeTab(StarChemicalMod.elems).setUnlocalizedName(name)
 					.setHardness(1.5F).setResistance(1.0F);
 		}
 	}
@@ -126,7 +126,7 @@ public class Element {
 		public EItem(Block b) {
 			// TODO Auto-generated constructor stub
 			super(b);
-			setRegistryName(StarChemicalMod.MODID, name);
+			setRegistryName(StarChemicalMod.MODID, name.toLowerCase());
 		}
 	}
 

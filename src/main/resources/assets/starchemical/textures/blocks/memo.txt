@@ -1,0 +1,12 @@
+base-metal   :卑金属
+half-metal   :半金属
+not-metal    :非金属
+metal        :金属
+unknown      :不明
+alkali-metal :アルカリ金属
+alkali-emetal:アルカリ土類金属
+halogen      :ハロゲン
+t-metal      :遷移金属
+lanthanoid   :ランタノイド
+actinoid     :アクチノイド
+gas          :希ガス

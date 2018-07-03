@@ -1,19 +1,13 @@
 package io.github.starmineouji.starchemical;
 
-import java.util.List;
-import java.util.Map;
-
 import org.apache.logging.log4j.Logger;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
 import io.github.starmineouji.starchemical.elem.base.Element;
-import io.github.starmineouji.starchemical.elem.base.RadioactiveElement;
-import io.github.starmineouji.starchemical.lib.Lambdas;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -41,28 +35,39 @@ public class StarChemicalMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		Element.addElement(new RadioactiveElement("Netherlium", 150, 100, Lambdas.toMap(map -> {
-			map.put("H", 1);
-			map.put("Ne", 1);
-			map.put("Fe", 1);
-			map.put("U", 5);
-		}), "Nt"));
-		Element.addElement(new RadioactiveElement("Enderlium", 151, 100, Lambdas.toMap(map -> {
-			map.put("H", 1);
-			map.put("Ne", 1);
-			map.put("U", 5);
-		}), "Ed"));
-		ElementRegister.preInit(event);
+//		Element.addElement(new Element("Netherlium", 150, "Nt"));
+//		Element.addElement(new Element("Enderlium", 151, "Ed"));
+		Element.addElement("Hydrogen", 1, "H");
+	Element.addElement("Hellium", 2, "He");
+		Element.addElement("Lithium", 3, "Li");
+		Element.addElement("Beryllium", 4, "Be");
+		Element.addElement("Natrium",11, "Na");
+		Element.addElement("Kalium", 19, "K");
+		Element.addElement("Rubidium", 37, "Rb");
+		Element.addElement("Caesium", 55, "Cs");
+		Element.addElement("Francium", 87, "Fr");
+		//Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium
+		logger.info(Element.elements.values().iterator().next().getItemblock().getRegistryName());
+		for (Element elem : Element.elements.values()) {
+			if (event.getSide().isClient()) {
+				ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
+						new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
+			}
+		}
 	}
 
 	@SubscribeEvent
 	public void registBlocks(RegistryEvent.Register<Block> event) {
-		ElementRegister.registblock(event);
+		for (Element elem : Element.elements.values()) {
+			event.getRegistry().registerAll(elem.getBlock());
+		}
 	}
 
 	@SubscribeEvent
 	public void registItems(RegistryEvent.Register<Item> event) {
-		ElementRegister.registitem(event);
+		for (Element elem : Element.elements.values()) {
+			event.getRegistry().registerAll(elem.getItemblock());
+		}
 	}
 
 	@EventHandler

@@ -1,0 +1,20 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+            "particle": "starchemical:blocks/kalium"
+        },
+        "model": "starchemical:kalium",
+        "uvlock": false
+    },
+    "variants": {
+        "normal": [
+            {
+            }
+        ],
+        "inventory": [
+            {
+            }
+        ]
+    }
+}

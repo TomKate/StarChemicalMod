@@ -13,18 +13,21 @@ public static void main(String[] args) throws IOException {
 	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	while (true) {
 		System.out.print("generate element name:");
-		String name = in.readLine();
-		if (name.equals("fin"))
+		String line = in.readLine().toLowerCase();
+		if (line.equals("fin"))
 			break;
+		String[] strs = line.split(",");
+		for (String name : strs) {
 		System.out.println("Creating BlockStates");
-		copy("./src/main/resources/assets/sccraft/blockstates/element_block.json",
-				"./src/main/resources/assets/sccraft/blockstates/" + name + ".json", name);
+		copy("./src/main/resources/assets/starchemical/blockstates/element.json",
+				"./src/main/resources/assets/starchemical/blockstates/" + name + ".json", name);
 		System.out.println("Creating Models");
-		copy("./src/main/resources/assets/sccraft/models/block/element_block.json",
-				"./src/main/resources/assets/sccraft/models/block/" + name + ".json", name);
-		copy("./src/main/resources/assets/sccraft/models/item/element_block.json",
-				"./src/main/resources/assets/sccraft/models/item/" + name + ".json", name);
+		copy("./src/main/resources/assets/starchemical/models/block/element.json",
+				"./src/main/resources/assets/starchemical/models/block/" + name + ".json", name);
+		copy("./src/main/resources/assets/starchemical/models/item/element.json",
+				"./src/main/resources/assets/starchemical/models/item/" + name + ".json", name);
 		System.out.println("Complete!");
+		}
 	}
 }
 public static void copy(String from, String to, String name) throws IOException {
