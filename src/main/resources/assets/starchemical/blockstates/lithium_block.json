@@ -2,9 +2,9 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-            "particle": "starchemical:blocks/hydrogen"
+            "particle": "starchemical:blocks/lithium"
         },
-        "model": "starchemical:hydrogen",
+        "model": "starchemical:lithium_block",
         "uvlock": false
     },
     "variants": {

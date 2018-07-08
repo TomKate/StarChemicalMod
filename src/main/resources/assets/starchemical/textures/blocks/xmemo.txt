@@ -1,12 +1,12 @@
-base-metal   :”Ú‹à‘®
-half-metal   :”¼‹à‘®
-not-metal    :”ñ‹à‘®
-metal        :‹à‘®
-unknown      :•s–¾
-alkali-metal :ƒAƒ‹ƒJƒŠ‹à‘®
-alkali-emetal:ƒAƒ‹ƒJƒŠ“y—Ş‹à‘®
-halogen      :ƒnƒƒQƒ“
-t-metal      :‘JˆÚ‹à‘®
-lanthanoid   :ƒ‰ƒ“ƒ^ƒmƒCƒh
-actinoid     :ƒAƒNƒ`ƒmƒCƒh
-gas          :ŠóƒKƒX
+base-metal   :å‘é‡‘å±
+half-metal   :åŠé‡‘å±
+not-metal    :éé‡‘å±
+metal        :é‡‘å±
+unknown      :ä¸æ˜
+alkali-metal :ã‚¢ãƒ«ã‚«ãƒªé‡‘å±
+alkali-emetal:ã‚¢ãƒ«ã‚«ãƒªåœŸé¡é‡‘å±
+halogen      :ãƒãƒ­ã‚²ãƒ³
+t-metal      :é·ç§»é‡‘å±
+lanthanoid   :ãƒ©ãƒ³ã‚¿ãƒã‚¤ãƒ‰
+actinoid     :ã‚¢ã‚¯ãƒãƒã‚¤ãƒ‰
+gas          :å¸Œã‚¬ã‚¹

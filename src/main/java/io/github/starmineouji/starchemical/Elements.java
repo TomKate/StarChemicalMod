@@ -13,7 +13,7 @@ public class Elements extends CreativeTabs {
 	@Override
 	public ItemStack getTabIconItem() {
 		// TODO Auto-generated method stub
-		return Element.elements.values().iterator().next().getItemblock().getDefaultInstance();
+		return Element.elements.values().iterator().next().getItem().getDefaultInstance();
 	}
 
 }

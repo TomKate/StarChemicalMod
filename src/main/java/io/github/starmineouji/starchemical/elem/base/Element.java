@@ -1,6 +1,7 @@
 package io.github.starmineouji.starchemical.elem.base;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,8 +10,11 @@ import com.google.common.base.Objects;
 import io.github.starmineouji.starchemical.StarChemicalMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 /**
  * 
@@ -32,10 +36,12 @@ public class Element {
 	 */
 	public Element(String name, int number, String ESymbol) {
 		super();
+		this.ESymbol = ESymbol;
 		this.name = name;
 		Number = number;
 		BLOCK = new EBlock();
-		IBLOCK = new EItem(BLOCK);
+		ITEM= new EItem();
+		IBLOCK = new ItemBlock(BLOCK).setRegistryName(StarChemicalMod.MODID, name.toLowerCase()+"_block").setCreativeTab(StarChemicalMod.elems);
 	}
 
 	/**
@@ -83,12 +89,11 @@ public class Element {
 	/**
 	 * 原子アイテム
 	 */
-	protected Item ITEM,
+	protected Item ITEM;
 			/**
 			 * アイテムブロック
 			 */
-			IBLOCK;
-
+private Item IBLOCK;
 	/**
 	 * 原子ブロック
 	 * 
@@ -105,7 +110,7 @@ public class Element {
 		public EBlock() {
 			super(Material.ROCK);
 			// TODO Auto-generated constructor stub
-			setRegistryName(StarChemicalMod.MODID, name.toLowerCase()).setCreativeTab(StarChemicalMod.elems).setUnlocalizedName(name)
+			setRegistryName(StarChemicalMod.MODID, name.toLowerCase()+"_block").setUnlocalizedName(name)
 					.setHardness(1.5F).setResistance(1.0F);
 		}
 	}
@@ -116,17 +121,26 @@ public class Element {
 	 * @author starmineouji
 	 *
 	 */
-	public class EItem extends ItemBlock {
+	public class EItem extends Item{
 		@Override
 		public int hashCode() {
 			// TODO Auto-generated method stub
 			return Objects.hashCode(name);
 		}
 
-		public EItem(Block b) {
+		public EItem() {
 			// TODO Auto-generated constructor stub
-			super(b);
+			super();
 			setRegistryName(StarChemicalMod.MODID, name.toLowerCase());
+			setCreativeTab(StarChemicalMod.elems);
+			setUnlocalizedName(name.toLowerCase());
+		}
+		@Override
+		public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+			// TODO Auto-generated method stub
+			tooltip.add("原子記号:"+ESymbol);
+			tooltip.add("原子番号:"+Number);
+			super.addInformation(stack, worldIn, tooltip, flagIn);
 		}
 	}
 
@@ -145,8 +159,11 @@ public class Element {
 	public Block getBlock() {
 		return BLOCK;
 	}
+	public Item getItem() {
+		return ITEM;
+	}
 
-	public Item getItemblock() {
+	public Item getItemBlock() {
 		return IBLOCK;
 	}
 }

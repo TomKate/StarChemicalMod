@@ -1,7 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "starchemical:blocks/francium"
+        "layer0": "starchemical:blocks/magnesium"
     },
     "display": {
     "thirdperson": {

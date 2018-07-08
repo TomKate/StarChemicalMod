@@ -3,6 +3,8 @@ package io.github.starmineouji.starchemical;
 import org.apache.logging.log4j.Logger;
 
 import io.github.starmineouji.starchemical.elem.base.Element;
+import io.github.starmineouji.starchemical.elem.base.RadioactiveElement;
+import io.github.starmineouji.starchemical.lib.Lambdas;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -38,20 +40,23 @@ public class StarChemicalMod {
 //		Element.addElement(new Element("Netherlium", 150, "Nt"));
 //		Element.addElement(new Element("Enderlium", 151, "Ed"));
 		Element.addElement("Hydrogen", 1, "H");
-	Element.addElement("Hellium", 2, "He");
+		Element.addElement("Hellium", 2, "He");
 		Element.addElement("Lithium", 3, "Li");
 		Element.addElement("Beryllium", 4, "Be");
-		Element.addElement("Natrium",11, "Na");
+		Element.addElement("Natrium", 11, "Na");
+		Element.addElement("Magnesium", 12,"Mg");
 		Element.addElement("Kalium", 19, "K");
 		Element.addElement("Rubidium", 37, "Rb");
 		Element.addElement("Caesium", 55, "Cs");
-		Element.addElement("Francium", 87, "Fr");
-		//Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium
-		logger.info(Element.elements.values().iterator().next().getItemblock().getRegistryName());
+		RadioactiveElement.addRElement("Francium", 87, 1308*20, Lambdas.toMap(map->{}), "Fr");
+		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium
+		logger.info(Element.elements.values().iterator().next().getItem().getRegistryName());
 		for (Element elem : Element.elements.values()) {
 			if (event.getSide().isClient()) {
-				ModelLoader.setCustomModelResourceLocation(elem.getItemblock(), 0,
-						new ModelResourceLocation(elem.getItemblock().getRegistryName(), "inventory"));
+				ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
+						new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
+				ModelLoader.setCustomModelResourceLocation(elem.getItemBlock(), 0,
+						new ModelResourceLocation(elem.getItemBlock().getRegistryName(), "inventory"));
 			}
 		}
 	}
@@ -66,7 +71,7 @@ public class StarChemicalMod {
 	@SubscribeEvent
 	public void registItems(RegistryEvent.Register<Item> event) {
 		for (Element elem : Element.elements.values()) {
-			event.getRegistry().registerAll(elem.getItemblock());
+			event.getRegistry().registerAll(elem.getItem(), elem.getItemBlock());
 		}
 	}
 

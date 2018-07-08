@@ -20,12 +20,14 @@ public static void main(String[] args) throws IOException {
 		for (String name : strs) {
 		System.out.println("Creating BlockStates");
 		copy("./src/main/resources/assets/starchemical/blockstates/element.json",
-				"./src/main/resources/assets/starchemical/blockstates/" + name + ".json", name);
+				"./src/main/resources/assets/starchemical/blockstates/" + name + "_block.json", name);
 		System.out.println("Creating Models");
 		copy("./src/main/resources/assets/starchemical/models/block/element.json",
-				"./src/main/resources/assets/starchemical/models/block/" + name + ".json", name);
+				"./src/main/resources/assets/starchemical/models/block/" + name + "_block.json", name);
 		copy("./src/main/resources/assets/starchemical/models/item/element.json",
 				"./src/main/resources/assets/starchemical/models/item/" + name + ".json", name);
+		copy("./src/main/resources/assets/starchemical/models/item/element_block.json",
+				"./src/main/resources/assets/starchemical/models/item/" + name + "_block.json", name);
 		System.out.println("Complete!");
 		}
 	}

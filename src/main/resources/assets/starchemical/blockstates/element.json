@@ -4,7 +4,7 @@
         "textures": {
             "particle": "starchemical:blocks/{0}"
         },
-        "model": "starchemical:{0}",
+        "model": "starchemical:{0}_block",
         "uvlock": false
     },
     "variants": {
