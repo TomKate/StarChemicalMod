@@ -1,5 +1,5 @@
 package io.github.starmineouji.starchemical.change;
 
-public class Fusion {
+public class CCombination extends CChange{
 
 }
