@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import io.github.starmineouji.starchemical.elem.base.Element;
 import io.github.starmineouji.starchemical.elem.base.RadioactiveElement;
 import io.github.starmineouji.starchemical.lib.Lambdas;
+import io.github.starmineouji.starchemical.register.ElementRegister;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,16 +40,17 @@ public class StarChemicalMod {
 		logger = event.getModLog();
 //		Element.addElement(new Element("Netherlium", 150, "Nt"));
 //		Element.addElement(new Element("Enderlium", 151, "Ed"));
-		Element.addElement("Hydrogen", 1, "H");
-		Element.addElement("Hellium", 2, "He");
-		Element.addElement("Lithium", 3, "Li");
-		Element.addElement("Beryllium", 4, "Be");
-		Element.addElement("Natrium", 11, "Na");
-		Element.addElement("Magnesium", 12,"Mg");
-		Element.addElement("Kalium", 19, "K");
-		Element.addElement("Rubidium", 37, "Rb");
-		Element.addElement("Caesium", 55, "Cs");
-		RadioactiveElement.addRElement("Francium", 87, 1308*20, Lambdas.toMap(map->{}), "Fr");
+		ElementRegister.addElement("Hydrogen", 1, "H");
+		ElementRegister.addElement("Hellium", 2, "He");
+		ElementRegister.addElement("Lithium", 3, "Li");
+		ElementRegister.addElement("Beryllium", 4, "Be");
+		ElementRegister.addElement("Natrium", 11, "Na");
+		ElementRegister.addElement("Magnesium", 12, "Mg");
+		ElementRegister.addElement("Kalium", 19, "K");
+		ElementRegister.addElement("Rubidium", 37, "Rb");
+		ElementRegister.addElement("Caesium", 55, "Cs");
+		ElementRegister.addRElement("Francium", 87, 1308 * 20, Lambdas.toMap(map -> {
+		}), "Fr");
 		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium
 		logger.info(Element.elements.values().iterator().next().getItem().getRegistryName());
 		for (Element elem : Element.elements.values()) {

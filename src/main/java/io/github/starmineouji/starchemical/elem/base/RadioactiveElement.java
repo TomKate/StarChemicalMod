@@ -47,12 +47,6 @@ public class RadioactiveElement extends Element {
 		ITEM = new RItem();
 	}
 
-	public static RadioactiveElement addRElement(String name, int number, long half_life,
-			Map<String, Integer> afterhalf, String ESymbol) {
-		RadioactiveElement ra = new RadioactiveElement(name, number, half_life, afterhalf, ESymbol);
-		Element.elements.put(ESymbol, ra);
-		return ra;
-	}
 
 	public class RItem extends Element.EItem {
 		@Override

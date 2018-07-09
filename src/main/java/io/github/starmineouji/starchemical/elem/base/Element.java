@@ -39,9 +39,10 @@ public class Element {
 		this.ESymbol = ESymbol;
 		this.name = name;
 		Number = number;
-		BLOCK = new EBlock();
-		ITEM= new EItem();
-		IBLOCK = new ItemBlock(BLOCK).setRegistryName(StarChemicalMod.MODID, name.toLowerCase()+"_block").setCreativeTab(StarChemicalMod.elems);
+		BLOCK = new EBlock().setCreativeTab(StarChemicalMod.elems);
+		ITEM = new EItem();
+		IBLOCK = new ItemBlock(BLOCK).setRegistryName(StarChemicalMod.MODID, name.toLowerCase() + "_block")
+				.setCreativeTab(StarChemicalMod.elems);
 	}
 
 	/**
@@ -90,10 +91,11 @@ public class Element {
 	 * 原子アイテム
 	 */
 	protected Item ITEM;
-			/**
-			 * アイテムブロック
-			 */
-private Item IBLOCK;
+	/**
+	 * アイテムブロック
+	 */
+	private Item IBLOCK;
+
 	/**
 	 * 原子ブロック
 	 * 
@@ -110,7 +112,7 @@ private Item IBLOCK;
 		public EBlock() {
 			super(Material.ROCK);
 			// TODO Auto-generated constructor stub
-			setRegistryName(StarChemicalMod.MODID, name.toLowerCase()+"_block").setUnlocalizedName(name)
+			setRegistryName(StarChemicalMod.MODID, name.toLowerCase() + "_block").setUnlocalizedName(name)
 					.setHardness(1.5F).setResistance(1.0F);
 		}
 	}
@@ -121,7 +123,7 @@ private Item IBLOCK;
 	 * @author starmineouji
 	 *
 	 */
-	public class EItem extends Item{
+	public class EItem extends Item {
 		@Override
 		public int hashCode() {
 			// TODO Auto-generated method stub
@@ -135,11 +137,12 @@ private Item IBLOCK;
 			setCreativeTab(StarChemicalMod.elems);
 			setUnlocalizedName(name.toLowerCase());
 		}
+
 		@Override
 		public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 			// TODO Auto-generated method stub
-			tooltip.add("原子記号:"+ESymbol);
-			tooltip.add("原子番号:"+Number);
+			tooltip.add("原子記号:" + ESymbol);
+			tooltip.add("原子番号:" + Number);
 			super.addInformation(stack, worldIn, tooltip, flagIn);
 		}
 	}
@@ -159,6 +162,7 @@ private Item IBLOCK;
 	public Block getBlock() {
 		return BLOCK;
 	}
+
 	public Item getItem() {
 		return ITEM;
 	}
