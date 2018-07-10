@@ -1,5 +1,6 @@
 package io.github.starmineouji.starchemical.elem.base;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Set;
 
 import com.google.common.base.Objects;
 
+import io.github.starmineouji.starchemical.Localizer;
 import io.github.starmineouji.starchemical.StarChemicalMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -139,15 +141,13 @@ public class Element {
 			setCreativeTab(StarChemicalMod.elems);
 			setUnlocalizedName(name.toLowerCase());
 		}
+
 		@Override
 		public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 			// TODO Auto-generated method stub
-			if(worldIn != null &&!worldIn.isRemote) {
-			Locale l = new Locale();
-			tooltip.add(l.formatMessage("chemical.symbol", null)+":"+ESymbol);
-			tooltip.add(l.formatMessage("chemical.atomicnum", null)+":"+Number);
-			tooltip.add(l.formatMessage("chemical.name", null)+":"+name);
-			}
+			tooltip.add(StarChemicalMod.localiser.getMessage("chemical.symbol")+":"+ESymbol);
+			tooltip.add(StarChemicalMod.localiser.getMessage("chemical.atomicnum")+":"+Number);
+			tooltip.add(StarChemicalMod.localiser.getMessage("chemical.name")+":"+name);
 			super.addInformation(stack, worldIn, tooltip, flagIn);
 		}
 	}

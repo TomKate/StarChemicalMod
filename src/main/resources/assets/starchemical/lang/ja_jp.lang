@@ -28,4 +28,5 @@ chemical.radioactive=放射性物質
 time.remaining=半減期まで残り
 time.hour=時間
 time.minute=分
-time.second=秒
+time.sec=秒
+chemical.name=原子名

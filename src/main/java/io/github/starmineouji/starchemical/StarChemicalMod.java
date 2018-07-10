@@ -1,9 +1,12 @@
 package io.github.starmineouji.starchemical;
 
+import java.io.File;
+import java.net.URL;
+import java.util.Locale;
+
 import org.apache.logging.log4j.Logger;
 
 import io.github.starmineouji.starchemical.elem.base.Element;
-import io.github.starmineouji.starchemical.elem.base.RadioactiveElement;
 import io.github.starmineouji.starchemical.lib.Lambdas;
 import io.github.starmineouji.starchemical.register.ElementRegister;
 import net.minecraft.block.Block;
@@ -13,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -30,6 +34,7 @@ public class StarChemicalMod {
 	public static final String NAME = "StarChemicalMod";
 	public static final String VERSION = "0.0.1-TEST";
 	public static final CreativeTabs elems = new Elements();
+	public static Localizer localiser;
 
 	public static Logger logger;
 
@@ -39,10 +44,21 @@ public class StarChemicalMod {
 	}
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event) throws Exception {
 		logger = event.getModLog();
 //		Element.addElement(new Element("Netherlium", 150, "Nt"));
 //		Element.addElement(new Element("Enderlium", 151, "Ed"));
+		Locale loc = Locale.getDefault();
+		String locstr = (loc.getLanguage() + "_" + loc.getCountry()).toLowerCase();
+		File file = new File("./config/starchemical/core.cfg");
+		file.getParentFile().mkdirs();
+		file.createNewFile();
+		Configuration cfg = new Configuration(file);
+		String path = cfg.getString("lang_path", "networks", "presets/github","言語ファイルの参照先($で言語)");
+		if(!path.equals("presets/github")) {
+			localiser = new Localizer(new File(path.replaceAll("\\$", (locstr == null || locstr.equals("_")? "ja_jp": locstr) )));
+		}else localiser=new Localizer();
+		cfg.save();
 		ElementRegister.addElement("Hydrogen", 1, "H");
 		ElementRegister.addElement("Hellium", 2, "He");
 		ElementRegister.addElement("Lithium", 3, "Li");

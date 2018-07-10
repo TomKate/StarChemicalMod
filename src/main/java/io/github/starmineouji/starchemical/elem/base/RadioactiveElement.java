@@ -1,34 +1,19 @@
 package io.github.starmineouji.starchemical.elem.base;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Random;
 
 import com.google.common.base.Objects;
 
+import io.github.starmineouji.starchemical.Localizer;
 import io.github.starmineouji.starchemical.StarChemicalMod;
-import net.minecraft.block.Block;
-import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.Locale;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.item.EntityTNTPrimed;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * 放射性物質の原子
@@ -54,7 +39,6 @@ public class RadioactiveElement extends Element {
 			// TODO Auto-generated method stub
 			return Objects.hashCode(name, ESymbol);
 		}
-
 		public RItem() {
 			// TODO Auto-generated constructor stub
 			super();
@@ -82,15 +66,14 @@ public class RadioactiveElement extends Element {
 		@Override
 		public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 			// TODO Auto-generated method stub
-			Locale l = new Locale();
 			super.addInformation(stack, worldIn, tooltip, flagIn);
-			tooltip.add(TextFormatting.RED + l.formatMessage("chemical.radioactive", null));
+			tooltip.add(TextFormatting.RED + StarChemicalMod.localiser.getMessage("chemical.radioactive"));
 			try {
 				long life = stack.getTagCompound().getLong("Life");
 				long tick = life % 20, second = life / 20 % 60, minute = life / 20 / 60 % 60;
-				tooltip.add(l.formatMessage("time.remaining", null) + ":" + life / 20 / 60 / 60
-						+ l.formatMessage("time.hour", null) + minute + l.formatMessage("time.minute", null) + second
-						+  l.formatMessage("time.sec", null)  + tick + "Tick");
+				tooltip.add(StarChemicalMod.localiser.getMessage("time.remaining") + ":" + life / 20 / 60 / 60
+						+ StarChemicalMod.localiser.getMessage("time.hour") + minute + StarChemicalMod.localiser.getMessage("time.minute") + second
+						+  StarChemicalMod.localiser.getMessage("time.sec")  + tick + "Tick");
 			} catch (Exception e) {
 			}
 		}

@@ -28,4 +28,4 @@ chemical.radioactive=Radioactive
 time.remaining=Remains until half-life
 time.hour=hour
 time.minute=minute
-time.second=second
+time.sec=second
