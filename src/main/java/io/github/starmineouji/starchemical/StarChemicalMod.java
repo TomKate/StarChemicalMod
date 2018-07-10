@@ -1,7 +1,6 @@
 package io.github.starmineouji.starchemical;
 
 import java.io.File;
-import java.net.URL;
 import java.util.Locale;
 
 import org.apache.logging.log4j.Logger;
@@ -86,7 +85,6 @@ public class StarChemicalMod {
 						new ModelResourceLocation(elem.getItemBlock().getRegistryName(), "inventory"));
 		}
 	}
-
 	@SubscribeEvent
 	public void registBlocks(RegistryEvent.Register<Block> event) {
 		for (Element elem : Element.elements.values()) {
