@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.apache.logging.log4j.core.util.SystemClock;
+
 public class Elementgenerater {
 public static void main(String[] args) throws IOException {
 	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -30,6 +32,8 @@ public static void main(String[] args) throws IOException {
 				"./src/main/resources/assets/starchemical/models/item/" + name + "_block.json", name);
 		System.out.println("Complete!");
 		}
+		for (String name : strs) 
+			System.out.println("tile."+name+".name\nitem."+name+".name");
 	}
 }
 public static void copy(String from, String to, String name) throws IOException {

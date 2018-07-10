@@ -12,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.Locale;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
@@ -47,7 +48,6 @@ public class RadioactiveElement extends Element {
 		ITEM = new RItem();
 	}
 
-
 	public class RItem extends Element.EItem {
 		@Override
 		public int hashCode() {
@@ -82,13 +82,15 @@ public class RadioactiveElement extends Element {
 		@Override
 		public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 			// TODO Auto-generated method stub
-			tooltip.add("原子記号:"+ESymbol);
-			tooltip.add("原子番号:"+Number);
-			tooltip.add(TextFormatting.RED + "放射性物質");
+			Locale l = new Locale();
+			super.addInformation(stack, worldIn, tooltip, flagIn);
+			tooltip.add(TextFormatting.RED + l.formatMessage("chemical.radioactive", null));
 			try {
 				long life = stack.getTagCompound().getLong("Life");
 				long tick = life % 20, second = life / 20 % 60, minute = life / 20 / 60 % 60;
-				tooltip.add("半減期まで残り" + life / 20 / 60 / 60 + "時間" + minute + "分" + second + "秒" + tick + "Tick");
+				tooltip.add(l.formatMessage("time.remaining", null) + ":" + life / 20 / 60 / 60
+						+ l.formatMessage("time.hour", null) + minute + l.formatMessage("time.minute", null) + second
+						+  l.formatMessage("time.sec", null)  + tick + "Tick");
 			} catch (Exception e) {
 			}
 		}

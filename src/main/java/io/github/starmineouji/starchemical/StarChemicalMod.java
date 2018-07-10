@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -19,6 +20,8 @@ import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod(modid = StarChemicalMod.MODID, name = StarChemicalMod.NAME, version = StarChemicalMod.VERSION)
 public class StarChemicalMod {
@@ -47,19 +50,24 @@ public class StarChemicalMod {
 		ElementRegister.addElement("Natrium", 11, "Na");
 		ElementRegister.addElement("Magnesium", 12, "Mg");
 		ElementRegister.addElement("Kalium", 19, "K");
+		ElementRegister.addElement("Calcium", 20, "Ca");
 		ElementRegister.addElement("Rubidium", 37, "Rb");
+		ElementRegister.addElement("Strontium", 38, "Sr");
 		ElementRegister.addElement("Caesium", 55, "Cs");
 		ElementRegister.addRElement("Francium", 87, 1308 * 20, Lambdas.toMap(map -> {
 		}), "Fr");
-		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium
+		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium,Calcium,Strontium
 		logger.info(Element.elements.values().iterator().next().getItem().getRegistryName());
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void registerModels(ModelRegistryEvent event) {
 		for (Element elem : Element.elements.values()) {
-			if (event.getSide().isClient()) {
 				ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
 						new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
 				ModelLoader.setCustomModelResourceLocation(elem.getItemBlock(), 0,
 						new ModelResourceLocation(elem.getItemBlock().getRegistryName(), "inventory"));
-			}
 		}
 	}
 

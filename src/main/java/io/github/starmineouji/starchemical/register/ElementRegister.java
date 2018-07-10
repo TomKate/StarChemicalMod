@@ -18,6 +18,7 @@ public class ElementRegister {
 		Element.elements.put(ESymbol, ra);
 		return ra;
 	}
+	
 	public static void addElementRegistClass(RegistClass regist) {
 		
 	}

@@ -10,11 +10,13 @@ import com.google.common.base.Objects;
 import io.github.starmineouji.starchemical.StarChemicalMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.resources.Locale;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * 
@@ -112,7 +114,7 @@ public class Element {
 		public EBlock() {
 			super(Material.ROCK);
 			// TODO Auto-generated constructor stub
-			setRegistryName(StarChemicalMod.MODID, name.toLowerCase() + "_block").setUnlocalizedName(name)
+			setRegistryName(StarChemicalMod.MODID, name.toLowerCase() + "_block").setUnlocalizedName(name.toLowerCase())
 					.setHardness(1.5F).setResistance(1.0F);
 		}
 	}
@@ -137,12 +139,15 @@ public class Element {
 			setCreativeTab(StarChemicalMod.elems);
 			setUnlocalizedName(name.toLowerCase());
 		}
-
 		@Override
 		public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 			// TODO Auto-generated method stub
-			tooltip.add("原子記号:" + ESymbol);
-			tooltip.add("原子番号:" + Number);
+			if(worldIn != null &&!worldIn.isRemote) {
+			Locale l = new Locale();
+			tooltip.add(l.formatMessage("chemical.symbol", null)+":"+ESymbol);
+			tooltip.add(l.formatMessage("chemical.atomicnum", null)+":"+Number);
+			tooltip.add(l.formatMessage("chemical.name", null)+":"+name);
+			}
 			super.addInformation(stack, worldIn, tooltip, flagIn);
 		}
 	}
