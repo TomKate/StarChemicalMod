@@ -53,10 +53,12 @@ public class StarChemicalMod {
 		file.getParentFile().mkdirs();
 		file.createNewFile();
 		Configuration cfg = new Configuration(file);
-		String path = cfg.getString("lang_path", "networks", "presets/github","言語ファイルの参照先($で言語)");
-		if(!path.equals("presets/github")) {
-			localiser = new Localizer(new File(path.replaceAll("\\$", (locstr == null || locstr.equals("_")? "ja_jp": locstr) )));
-		}else localiser=new Localizer();
+		String path = cfg.getString("lang_path", "networks", "presets/github", "言語ファイルの参照先($で言語)");
+		if (!path.equals("presets/github")) {
+			localiser = new Localizer(
+					new File(path.replaceAll("\\$", (locstr == null || locstr.equals("_") ? "ja_jp" : locstr))));
+		} else
+			localiser = new Localizer();
 		cfg.save();
 		ElementRegister.addElement("Hydrogen", 1, "H");
 		ElementRegister.addElement("Hellium", 2, "He");
@@ -72,19 +74,20 @@ public class StarChemicalMod {
 		ElementRegister.addRElement("Francium", 87, 1308 * 20, Lambdas.toMap(map -> {
 		}), "Fr");
 		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium,Calcium,Strontium
-		logger.info(Element.elements.values().iterator().next().getItem().getRegistryName());
+
 	}
 
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void registerModels(ModelRegistryEvent event) {
 		for (Element elem : Element.elements.values()) {
-				ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
-						new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
-				ModelLoader.setCustomModelResourceLocation(elem.getItemBlock(), 0,
-						new ModelResourceLocation(elem.getItemBlock().getRegistryName(), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
+					new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
+			ModelLoader.setCustomModelResourceLocation(elem.getItemBlock(), 0,
+					new ModelResourceLocation(elem.getItemBlock().getRegistryName(), "inventory"));
 		}
 	}
+
 	@SubscribeEvent
 	public void registBlocks(RegistryEvent.Register<Block> event) {
 		for (Element elem : Element.elements.values()) {
