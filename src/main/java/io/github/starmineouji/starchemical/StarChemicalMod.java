@@ -71,9 +71,11 @@ public class StarChemicalMod {
 		ElementRegister.addElement("Rubidium", 37, "Rb");
 		ElementRegister.addElement("Strontium", 38, "Sr");
 		ElementRegister.addElement("Caesium", 55, "Cs");
+		ElementRegister.addElement("Barium", 56, "Ba");
 		ElementRegister.addRElement("Francium", 87, 1308 * 20, Lambdas.toMap(map -> {
 		}), "Fr");
-		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium,Calcium,Strontium
+		ElementRegister.addRElement("Radium", 88,1601*20,Lambdas.toMap(map->{}), "Ra");
+		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium,Calcium,Strontium,Barium,Radium
 
 	}
 
