@@ -57,6 +57,7 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
     //をご覧ください。
+    compile fileTree(dir: 'libs', include: '*.jar')
 }
 
 processResources {

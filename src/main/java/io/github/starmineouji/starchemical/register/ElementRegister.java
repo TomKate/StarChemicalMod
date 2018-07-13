@@ -1,6 +1,8 @@
 package io.github.starmineouji.starchemical.register;
 
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import io.github.starmineouji.starchemical.elem.base.Element;
 import io.github.starmineouji.starchemical.elem.base.RadioactiveElement;
@@ -18,7 +20,7 @@ public class ElementRegister {
 		Element.elements.put(ESymbol, ra);
 		return ra;
 	}
-	
+	private Set<RegistClass> registers = new HashSet<>();
 	public static void addElementRegistClass(RegistClass regist) {
 		
 	}
