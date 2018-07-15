@@ -1,4 +1,4 @@
-package io.github.starmineouji.starchemical;
+package io.github.starmineouji.starchemical.main;
 
 import java.io.File;
 import java.io.FileInputStream;

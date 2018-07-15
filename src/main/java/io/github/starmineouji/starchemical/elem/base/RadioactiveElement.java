@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.google.common.base.Objects;
 
-import io.github.starmineouji.starchemical.Localizer;
-import io.github.starmineouji.starchemical.StarChemicalMod;
+import io.github.starmineouji.starchemical.main.Localizer;
+import io.github.starmineouji.starchemical.main.StarChemicalMod;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;

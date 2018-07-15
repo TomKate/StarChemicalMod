@@ -8,8 +8,8 @@ import java.util.Set;
 
 import com.google.common.base.Objects;
 
-import io.github.starmineouji.starchemical.Localizer;
-import io.github.starmineouji.starchemical.StarChemicalMod;
+import io.github.starmineouji.starchemical.main.Localizer;
+import io.github.starmineouji.starchemical.main.StarChemicalMod;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.resources.Locale;

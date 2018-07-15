@@ -1,4 +1,4 @@
-package io.github.starmineouji.starchemical;
+package io.github.starmineouji.starchemical.main;
 
 import java.io.File;
 import java.util.Locale;
@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import io.github.starmineouji.starchemical.elem.base.Element;
 import io.github.starmineouji.starchemical.lib.Lambdas;
+import io.github.starmineouji.starchemical.main.Bridge.NotLoadedException;
 import io.github.starmineouji.starchemical.register.ElementRegister;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -19,10 +20,12 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLConstructionEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -34,6 +37,8 @@ public class StarChemicalMod {
 	public static final String VERSION = "0.0.1-TEST";
 	public static final CreativeTabs elems = new Elements();
 	public static Localizer localiser;
+	@Instance(MODID)
+	public static StarChemicalMod instance;
 
 	public static Logger logger;
 
@@ -60,6 +65,13 @@ public class StarChemicalMod {
 		} else
 			localiser = new Localizer();
 		cfg.save();
+		try {
+			Bridge.SupportIC2();
+		} catch (NotLoadedException e) {
+			// TODO: handle exception
+			logger.info(e.getMessage() + "の読み込みに失敗しました。インストールしている場合は再起動してください。(インストールの必要はありません。)");
+		}
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GUIHandler());
 		ElementRegister.addElement("Hydrogen", 1, "H");
 		ElementRegister.addElement("Hellium", 2, "He");
 		ElementRegister.addElement("Lithium", 3, "Li");
@@ -74,9 +86,11 @@ public class StarChemicalMod {
 		ElementRegister.addElement("Barium", 56, "Ba");
 		ElementRegister.addRElement("Francium", 87, 1308 * 20, Lambdas.toMap(map -> {
 		}), "Fr");
-		ElementRegister.addRElement("Radium", 88,1601*20,Lambdas.toMap(map->{}), "Ra");
-		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium,Calcium,Strontium,Barium,Radium
+		ElementRegister.addRElement("Radium", 88, 1601 * 20, Lambdas.toMap(map -> {
+		}), "Ra");
 
+		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium
+		// Calcium,Strontium,Barium,Radium
 	}
 
 	@SubscribeEvent

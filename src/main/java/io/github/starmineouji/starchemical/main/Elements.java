@@ -1,4 +1,4 @@
-package io.github.starmineouji.starchemical;
+package io.github.starmineouji.starchemical.main;
 
 import io.github.starmineouji.starchemical.elem.base.Element;
 import net.minecraft.creativetab.CreativeTabs;
