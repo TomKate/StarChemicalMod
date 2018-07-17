@@ -42,14 +42,14 @@ public class PressureTileEntity extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		if (index >= 3)
+		if (index >= 2)
 			throw new ArrayIndexOutOfBoundsException(index);
 		return index == 1 ? O : I;
 	}
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if (index >= 3)
+		if (index >= 2)
 			throw new ArrayIndexOutOfBoundsException(index);
 		return index == 1 ? O = new ItemStack(O.getItem(), O.getCount() - count)
 				: (I = new ItemStack(I.getItem(), I.getCount() - count));
@@ -114,7 +114,7 @@ public class PressureTileEntity extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		if (index >= 3)
+		if (index >= 2)
 			throw new ArrayIndexOutOfBoundsException(index);
 		return index == 1 ? O = new ItemStack(Block.getBlockFromName("air"))
 				: (I = new ItemStack(Block.getBlockFromName("air")));

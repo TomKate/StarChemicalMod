@@ -9,6 +9,8 @@ import io.github.starmineouji.starchemical.elem.base.Element;
 import io.github.starmineouji.starchemical.lib.Lambdas;
 import io.github.starmineouji.starchemical.main.Bridge.NotLoadedException;
 import io.github.starmineouji.starchemical.register.ElementRegister;
+import io.github.starmineouji.starchemical.tiles.pressure.PressureBlock;
+import io.github.starmineouji.starchemical.tiles.pressure.PressureTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
@@ -26,6 +28,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -46,9 +49,10 @@ public class StarChemicalMod {
 	public void construct(FMLConstructionEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-
+	public static final PressureBlock pressure = new PressureBlock();
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) throws Exception {
+		
 		logger = event.getModLog();
 //		Element.addElement(new Element("Netherlium", 150, "Nt"));
 //		Element.addElement(new Element("Enderlium", 151, "Ed"));
@@ -88,7 +92,7 @@ public class StarChemicalMod {
 		}), "Fr");
 		ElementRegister.addRElement("Radium", 88, 1601 * 20, Lambdas.toMap(map -> {
 		}), "Ra");
-
+		GameRegistry.registerTileEntity(PressureTileEntity.class, "Pressure");
 		// Hydrogen,Hellium,Lithium,Beryllium,Natrium,Kalium,Rubidium,Caesium,Francium,Magnesium
 		// Calcium,Strontium,Barium,Radium
 	}
@@ -96,6 +100,8 @@ public class StarChemicalMod {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void registerModels(ModelRegistryEvent event) {
+			ModelLoader.setCustomModelResourceLocation(PressureBlock.item, 0,
+					new ModelResourceLocation(PressureBlock.item.getRegistryName(), "inventory"));
 		for (Element elem : Element.elements.values()) {
 			ModelLoader.setCustomModelResourceLocation(elem.getItem(), 0,
 					new ModelResourceLocation(elem.getItem().getRegistryName(), "inventory"));
@@ -106,6 +112,7 @@ public class StarChemicalMod {
 
 	@SubscribeEvent
 	public void registBlocks(RegistryEvent.Register<Block> event) {
+		event.getRegistry().register(pressure);
 		for (Element elem : Element.elements.values()) {
 			event.getRegistry().registerAll(elem.getBlock());
 		}
@@ -113,6 +120,7 @@ public class StarChemicalMod {
 
 	@SubscribeEvent
 	public void registItems(RegistryEvent.Register<Item> event) {
+		event.getRegistry().register(pressure.item);
 		for (Element elem : Element.elements.values()) {
 			event.getRegistry().registerAll(elem.getItem(), elem.getItemBlock());
 		}
