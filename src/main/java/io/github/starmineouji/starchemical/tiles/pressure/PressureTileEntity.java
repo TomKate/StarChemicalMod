@@ -47,13 +47,14 @@ public class PressureTileEntity extends TileEntity implements IInventory {
 		return index == 1 ? O : I;
 	}
 
-	@Override
-	public ItemStack decrStackSize(int index, int count) {
-		if (index >= 2)
-			throw new ArrayIndexOutOfBoundsException(index);
-		return index == 1 ? O = new ItemStack(O.getItem(), O.getCount() - count)
-				: (I = new ItemStack(I.getItem(), I.getCount() - count));
-	}
+    	@Override
+    	public ItemStack decrStackSize(int index, int count) {
+        	if (index >= 2) {
+            		throw new ArrayIndexOutOfBoundsException(index);
+       		}
+        	return index == 1 ? ItemStackHelper.getAndSplit(Lists.newArrayList(O), index, count) :
+                	ItemStackHelper.getAndSplit(Lists.newArrayList(I), index, count);
+    }
 
 	@Override
 	public void deserializeNBT(NBTTagCompound nbt) {
