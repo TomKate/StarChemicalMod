@@ -1,6 +1,8 @@
 package io.github.starmineouji.starchemical.tiles.pressure;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -64,6 +66,7 @@ public class PressureContainer extends Container {
 				}
 			}
 			if (itemStack1.getCount() == 0) {
+				slot.putStack(new ItemStack(Block.getBlockFromName("air")));
 			} else {
 				slot.onSlotChanged();
 			}
